@@ -10,7 +10,7 @@ namespace BlackJackApp
 
 
 
-        public void Add(Card newCard)
+        public void Receive(Card newCard)
         {
             IndividualCards.Add(newCard);
         }
@@ -91,14 +91,16 @@ namespace BlackJackApp
             var newCard = deck[0];
             deck.Remove(newCard);
 
-            Console.WriteLine(newCard.Description());
+            playerHand.Receive(newCard);
 
-            playerHand.Add(newCard);
+            newCard = deck[0];
+
+            playerHand.Receive(newCard);
 
             var playerHandCards = playerHand.IndividualCards;
-            foreach(var card in playerHandCards)
+            foreach (var card in playerHandCards)
             {
-              Console.WriteLine(card.Description());
+                Console.WriteLine(card.Description());
             }
 
         }
