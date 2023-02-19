@@ -3,6 +3,21 @@ using System.Collections.Generic;
 
 namespace BlackJackApp
 {
+    class Hand
+    {
+
+        public List<Card> IndividualCards { get; set; } = new List<Card>();
+
+
+
+        public void Add(Card newCard)
+        {
+            IndividualCards.Add(newCard);
+        }
+    }
+
+
+
 
     class Card
     {
@@ -68,6 +83,23 @@ namespace BlackJackApp
 
             }
 
+            var playerHand = new Hand();
+
+
+            var dealerHand = new Hand();
+
+            var newCard = deck[0];
+            deck.Remove(newCard);
+
+            Console.WriteLine(newCard.Description());
+
+            playerHand.Add(newCard);
+
+            var playerHandCards = playerHand.IndividualCards;
+            foreach(var card in playerHandCards)
+            {
+              Console.WriteLine(card.Description());
+            }
 
         }
     }
