@@ -1,12 +1,38 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BlackJackApp
 {
-  class Program
-  {
-    static void Main(string[] args)
+
+    class Card
     {
-      Console.WriteLine("Welcome to C#");
+
+        public string Rank { get; set; }
+        public string Suit { get; set; }
+
+
+        public int Value()
+        {
+            return 0;
+        }
+
+          
+
+
     }
-  }
+
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            var deck = new List<Card>();
+
+
+
+
+        }
+    }
 }
