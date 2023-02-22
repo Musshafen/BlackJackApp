@@ -14,6 +14,23 @@ namespace BlackJackApp
         {
             IndividualCards.Add(newCard);
         }
+
+        public int TotalValue()
+        {
+
+            var total = 0;
+
+            foreach (var card in IndividualCards)
+            {
+                total += card.Value();
+            }
+
+
+
+            return total;
+        }
+
+
     }
 
 
@@ -28,12 +45,68 @@ namespace BlackJackApp
 
         public int Value()
         {
-            return 0;
+            var theCardValue = 0;
+            if (Rank == "2")
+            {
+                theCardValue = 2;
+            }
+            else if (Rank == "3")
+            {
+                theCardValue = 3;
+            }
+            else if (Rank == "4")
+            {
+                theCardValue = 4;
+            }
+            else if (Rank == "5")
+            {
+                theCardValue = 5;
+            }
+            else if (Rank == "6")
+            {
+                theCardValue = 6;
+            }
+            else if (Rank == "7")
+            {
+                theCardValue = 7;
+            }
+            else if (Rank == "8")
+            {
+                theCardValue = 8;
+            }
+            else if (Rank == "9")
+            {
+                theCardValue = 9;
+            }
+            else if (Rank == "10")
+            {
+                theCardValue = 10;
+            }
+            else if (Rank == "Jack")
+            {
+                theCardValue = 10;
+            }
+            else if (Rank == "Queen")
+            {
+                theCardValue = 10;
+            }
+            else if (Rank == "King")
+            {
+                theCardValue = 10;
+            }
+            else if (Rank == "Ace")
+            {
+                theCardValue = 11;
+            }
+
+
+
+            return theCardValue;
         }
 
         public string Description()
         {
-            var newDescriptionString = $"The {Rank} of {Suit}";
+            var newDescriptionString = $"The {Rank} of {Suit} - worth {Value()} points. ";
 
             return newDescriptionString;
 
@@ -94,14 +167,30 @@ namespace BlackJackApp
             playerHand.Receive(newCard);
 
             newCard = deck[0];
+            deck.Remove(newCard);
 
             playerHand.Receive(newCard);
 
-            var playerHandCards = playerHand.IndividualCards;
-            foreach (var card in playerHandCards)
+
+            newCard = deck[0];
+            deck.Remove(newCard);
+
+            dealerHand.Receive(newCard);
+
+            newCard = deck[0];
+            deck.Remove(newCard);
+
+            dealerHand.Receive(newCard);
+
+            Console.WriteLine("Your cards are ");
+            foreach (var card in playerHand.IndividualCards)
             {
                 Console.WriteLine(card.Description());
             }
+            Console.WriteLine("Your total hand value is: ");
+            Console.WriteLine(playerHand.TotalValue());
+
+
 
         }
     }
